@@ -13,7 +13,6 @@
 <script>
 export default {
   name: 'beer',
-  apiUrl: 'http://localhost:9292/beers',
   data () {
     return {
       beersCount: "...Loading"
@@ -21,15 +20,14 @@ export default {
   },
   methods: {
     beerPurchased: function() {
-      fetch('http://localhost:9292/purchase_beer', {method: 'POST'})
+      fetch('https://radiant-crag-18740.herokuapp.com/purchase_beer', {method: 'POST'})
         .then(data => data.json())
         .then(beers => {
           this.updateBeers(beers[0].count)
         })
     },
     fetchBeers: function() {
-      console.log('fetch beer')
-      fetch('http://localhost:9292/beers')
+      fetch('https://radiant-crag-18740.herokuapp.com/beers')
         .then(data => data.json())
         .then(beers => {
           this.updateBeers(beers[0].count)
@@ -43,8 +41,6 @@ export default {
     this.fetchBeers()
   }
 }
-
-
 </script>
 
 <style scoped>
