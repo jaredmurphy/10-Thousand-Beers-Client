@@ -5,7 +5,7 @@
       <h2>Beers Left</h2>
     </div>
     <div class="button">
-      <button v-on:click="beerPurchased()">Beer Purchased</button>
+      <button v-on:click="beerPurchased()">Cheers</button>
     </div>
   </div>
 </template>
@@ -44,5 +44,11 @@ export default {
 </script>
 
 <style scoped>
+button {
+  font-size: 30px;
+  font-weight: bold;
+  background-color: steelblue;
+  color: antiquewhite;
+}
 
 </style>

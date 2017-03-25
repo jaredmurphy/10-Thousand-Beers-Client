@@ -17,6 +17,9 @@ export default {
 </script>
 
 <style>
+body {
+  background-color: burlywood;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   text-align: center;
@@ -26,5 +29,6 @@ export default {
 
 img {
   max-height: 300px;
+  border-radius: 5px;
 }
 </style>
