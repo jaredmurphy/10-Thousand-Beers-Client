@@ -11,24 +11,42 @@
 </template>
 
 <script>
-import Vue from 'vue'
-
 export default {
   name: 'hello',
+  apiUrl: 'http://localhost:9292/beers',
   data () {
     return {
-      beersCount: 10000
+      beersCount: "...Loading"
     }
   },
   methods: {
     beerPurchased: function() {
-      this.beersCount = this.beersCount - 1;
+      fetch('http://localhost:9292/purchase_beer', {method: 'POST'})
+        .then(data => data.json())
+        .then(beers => {
+          this.updateBeers(beers[0].count)
+        })
+    },
+    fetchBeers: function() {
+      console.log('fetch beer')
+      fetch('http://localhost:9292/beers')
+        .then(data => data.json())
+        .then(beers => {
+          this.updateBeers(beers[0].count)
+        })
+    },
+    updateBeers: function(count) {
+      this.beersCount = count;
     }
+  },
+  beforeMount: function() {
+    this.fetchBeers()
   }
 }
+
+
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h1, h2 {
   font-weight: normal;
